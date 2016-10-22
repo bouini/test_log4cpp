@@ -13,19 +13,19 @@
 #define LOG_WARN(LOGGER,MSG,...) GET_LOGGER(LOGGER).warn((MSG),## __VA_ARGS__)
 #define LOG_INFO(LOGGER,MSG,...) GET_LOGGER(LOGGER).info((MSG),## __VA_ARGS__)
 #define LOG_DEBUG(LOGGER,MSG,...) GET_LOGGER(LOGGER).debug((MSG),## __VA_ARGS__)
-#define LOG_VERBOSE(LOGGER,MSG,...) GET_LOGGER(LOGGER).verbose((MSG),## __VA_ARGS__)
+#define LOG_VERBOSE(LOGGER,MSG,...) GET_LOGGER(LOGGER).debug((MSG),## __VA_ARGS__)
 
 #define LOGGER_NAME "log"
 
 void init_logger() {
     log4cpp::PatternLayout* layout = new log4cpp::PatternLayout();
-    layout->setConversionPattern("[%d{%Y/%m/%d %H:%M:%S,%l}] [%p] <%c> %m%n");
+    layout->setConversionPattern("[%d{%Y/%m/%d %H:%M:%S,%l}] [%p] <%c.%t> %m%n");
     
     log4cpp::Appender* appender = new log4cpp::OstreamAppender("console", &std::cout);
     appender->setLayout(layout);
     
     log4cpp::Category& logger = log4cpp::Category::getInstance(std::string(LOGGER_NAME));
-    logger.setPriority(log4cpp::Priority::ERROR);
+    logger.setPriority(log4cpp::Priority::DEBUG);
     logger.addAppender(appender);
 }
 
@@ -34,6 +34,7 @@ int main(int argc, char** argv) {
     
     LOG_ERROR(LOGGER_NAME,"hello world!");
     LOG_INFO(LOGGER_NAME,"HELLO WORLD!");
+    LOG_VERBOSE(LOGGER_NAME,"another log");
 
     return 0;
 }
