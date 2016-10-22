@@ -1,9 +1,17 @@
+# CMake
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
-Makefile
 cmake_install.cmake
-install_manifest.txt
-CTestTestfile.cmake
 
+# Make
+Makefile
+
+# ninja
+build.ninja
+rules.ninja
+.ninja_deps
+.ninja_log
+
+# executable
 test_log4cpp
