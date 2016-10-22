@@ -2,8 +2,8 @@ cmake_minimum_required (VERSION 2.8)
 
 set(LOG4CPP_PATH $ENV{HOME}/3rd-parties/log4cpp) 
 
-IF(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-ADD_COMPILE_FLAG("-pthread")
+IF(NOT (${CMAKE_SYSTEM_NAME} MATCHES "Darwin"))
+set(CMAKE_CXX_FLAGS "-pthread")
 ENDIF()
 
 project(test_log4cpp)
