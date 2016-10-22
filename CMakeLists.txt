@@ -1,6 +1,6 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.0)
 
-set(LOG4CPP_PATH "/Users/nicolas/log4cpp/") 
+set(LOG4CPP_PATH $ENV{HOME}/log4cpp) 
 
 project(test_log4cpp)
 
